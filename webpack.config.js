@@ -4,8 +4,9 @@ const path = require('path')
 const autoprefixer = require('autoprefixer')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const miniCssExtractPlugin = require('mini-css-extract-plugin')
-const ESLintPlugin = require('eslint-webpack-plugin')
+// const ESLintPlugin = require('eslint-webpack-plugin')
 const webpack = require('webpack')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   mode: 'development',
@@ -22,10 +23,18 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({ template: './src/index.html' }),
     new miniCssExtractPlugin(),
-    new ESLintPlugin(),
+    // new ESLintPlugin(),
     new webpack.ProvidePlugin({
       $: require.resolve('jquery'),
       jQuery: require.resolve('jquery'),
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: 'src/assets',
+          to: 'assets',
+        },
+      ],
     }),
   ],
   module: {
@@ -61,6 +70,18 @@ module.exports = {
             loader: 'babel-loader',
             options: {
               presets: ['@babel/preset-env'],
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'assets/icons/',
             },
           },
         ],
