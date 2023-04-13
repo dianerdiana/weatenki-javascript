@@ -63,25 +63,13 @@ module.exports = {
         ],
       },
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              presets: ['@babel/preset-env'],
-            },
-          },
-        ],
-      },
-      {
         test: /\.(jpe?g|png|gif|svg)$/i,
         use: [
           {
             loader: 'file-loader',
             options: {
               name: '[name].[ext]',
-              outputPath: 'assets/icons/',
+              outputPath: 'assets/**/**',
             },
           },
         ],
