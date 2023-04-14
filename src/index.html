@@ -7,10 +7,64 @@
     <title>WeaTenki</title>
   </head>
   <body>
-    <div class="container py-4 px-3 mx-auto">
-      <h1>Hello, Bootstrap</h1>
-      <button class="btn btn-warning">Primary Button</button>
-      <img src="./assets/images/WeatherIcon - 1-14.svg" alt="forecast" />
-    </div>
+    <main class="container py-5">
+      <div class="row">
+        <div class="col-sm-6">
+          <img
+            src="./assets/icons/WeatherIcon - 2-40.png"
+            alt="today-forecast"
+            class="img-fluid"
+            width="143px"
+          />
+          <div class="my-3">
+            <span class="today-temp">
+              27
+              <span class="temp"> ℃ </span>
+            </span>
+          </div>
+        </div>
+        <div>
+          <span class="fs-3 text-white text-shadow d-block fw-bold">
+            17th Jun ‘21
+          </span>
+          <span class="fs-6 text-white text-shadow d-block">
+            <span class="border-end pe-3">Thursday</span>
+            <span class="ps-3">2:45 am</span>
+          </span>
+        </div>
+        <div class="mt-3 d-flex">
+          <div class="d-flex align-items-center pe-4 border-end">
+            <img
+              src="./assets/icons/today-wind.png"
+              alt="today-wind"
+              class="img-thumbnail bg-transparent border-0"
+              width="30px"
+            />
+            <span class="ms-2 me-4 text-white text-shadow fw-bold">Wind</span>
+            <span class="text-white text-shadow fw-bold">10 km/h</span>
+          </div>
+          <div class="d-flex align-items-center px-4 border-end">
+            <img
+              src="./assets/icons/today-hum.png"
+              alt="today-hum"
+              class="img-thumbnail bg-transparent border-0"
+              width="30px"
+            />
+            <span class="ms-2 me-4 text-white text-shadow fw-bold">Hum</span>
+            <span class="text-white text-shadow fw-bold">50%</span>
+          </div>
+          <div class="d-flex align-items-center ps-4">
+            <img
+              src="./assets/icons/today-rain.png"
+              alt="today-rain"
+              class="img-thumbnail bg-transparent border-0"
+              width="30px"
+            />
+            <span class="ms-2 me-4 text-white text-shadow fw-bold">Rain</span>
+            <span class="text-white text-shadow fw-bold">0.2%</span>
+          </div>
+        </div>
+      </div>
+    </main>
   </body>
 </html>

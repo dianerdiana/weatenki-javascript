@@ -1,6 +1,30 @@
+@import './fonts';
+@import './customize';
+@import './functions';
 @import 'bootstrap/scss/bootstrap';
 
 body {
   min-height: 100vh;
   background: linear-gradient(248.66deg, #7673dc 0%, #a8c8ed 100%);
+  font-weight: normal;
+}
+
+.today-temp {
+  display: inline-block;
+  font-size: toRem(164);
+  filter: drop-shadow(-4.51px 2.26px 0.75px rgba(0, 0, 0, 0.15));
+  position: relative;
+  color: $white;
+
+  .temp {
+    position: absolute;
+    top: 10%;
+    left: 100%;
+    font-size: toRem(32);
+    font-weight: bold;
+  }
+}
+
+.text-shadow {
+  text-shadow: -1.51px 2.26px 0.75px rgba(0, 0, 0, 0.1);
 }
