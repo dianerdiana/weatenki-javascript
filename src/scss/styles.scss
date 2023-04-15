@@ -28,3 +28,31 @@ body {
 .text-shadow {
   text-shadow: -1.51px 2.26px 0.75px rgba(0, 0, 0, 0.1);
 }
+
+.btn-search {
+  background: linear-gradient(
+    116.79deg,
+    rgba(255, 255, 255, 0.48) 0%,
+    rgba(255, 255, 255, 0.12) 99.45%
+  );
+  backdrop-filter: blur(50px);
+  /* Note: backdrop-filter has minimal browser support */
+}
+
+.dropdown-content {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  width: 75%;
+
+  .dropdown-link {
+    text-decoration: none;
+    &:hover {
+      background-color: #e2e7ec;
+    }
+  }
+}

@@ -1,1 +1,3 @@
-import '../scss/styles.scss'
+const main = () => {}
+
+export default main
