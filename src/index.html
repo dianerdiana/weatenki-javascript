@@ -8,23 +8,24 @@
   </head>
   <body>
     <main class="container py-5">
-      <div class="row">
+      <div class="row py-5">
         <div class="col-sm-6">
           <img
-            src="./assets/icons/WeatherIcon - 2-40.png"
+            src="./assets/icons/WeatherIcon - 2-40.svg"
             alt="today-forecast"
             class="img-fluid"
             width="143px"
+            id="today_forecast"
           />
           <div class="my-3">
-            <span class="today-temp">
+            <span id="today_temp" class="today-temp">
               27
               <span class="temp"> ℃ </span>
             </span>
           </div>
         </div>
 
-        <div class="col-sm-6">
+        <div class="col-sm-6 d-flex flex-column justify-content-between">
           <div class="row align-items-center">
             <div class="col-sm-6">
               <img
@@ -42,10 +43,10 @@
               <div class="input-group">
                 <input
                   type="text"
+                  name="search-location"
                   class="form-control shadow-none"
-                  placeholder="Username"
-                  aria-label="Username"
-                  aria-describedby="basic-addon1"
+                  placeholder="Search..."
+                  aria-label="Location"
                 />
                 <span class="btn btn-search p-1 ms-auto input-group-text">
                   <img
@@ -56,53 +57,134 @@
                   />
                 </span>
               </div>
-              <div class="dropdown-content rounded-3 py-2">
-                <a href="#" class="dropdown-link px-3 py-1">Link 1</a>
+              <div class="dropdown-content d-none rounded-3 py-2">
+                <a href="#" class="dropdown-link px-3 py-2">Link 1</a>
               </div>
             </div>
           </div>
-        </div>
+          <div>
+            <div>
+              <span class="fs-3 text-white text-shadow d-block fw-bold">
+                17th Jun ‘21
+              </span>
+              <span class="fs-6 text-white text-shadow d-block">
+                <span class="border-end pe-3">Thursday</span>
+                <span class="ps-3">2:45 am</span>
+              </span>
+            </div>
+            <div class="mt-3 d-flex">
+              <div class="d-flex align-items-center pe-4 border-end">
+                <img
+                  src="./assets/icons/today-wind.png"
+                  alt="today-wind"
+                  class="img-thumbnail bg-transparent border-0"
+                  width="30px"
+                />
+                <span class="ms-2 me-4 text-white text-shadow fw-bold"
+                  >Wind</span
+                >
+                <span class="text-white text-shadow fw-bold">10 km/h</span>
+              </div>
+              <div class="d-flex align-items-center px-4 border-end">
+                <img
+                  src="./assets/icons/today-hum.png"
+                  alt="today-hum"
+                  class="img-thumbnail bg-transparent border-0"
+                  width="30px"
+                />
+                <span class="ms-2 me-4 text-white text-shadow fw-bold"
+                  >Hum</span
+                >
+                <span class="text-white text-shadow fw-bold">50%</span>
+              </div>
+              <div class="d-flex align-items-center ps-4">
+                <img
+                  src="./assets/icons/today-rain.png"
+                  alt="today-rain"
+                  class="img-thumbnail bg-transparent border-0"
+                  width="30px"
+                />
+                <span class="ms-2 me-4 text-white text-shadow fw-bold"
+                  >Rain</span
+                >
+                <span class="text-white text-shadow fw-bold">0.2%</span>
+              </div>
+            </div>
+          </div>
 
-        <!-- Different Col -->
-        <div>
-          <span class="fs-3 text-white text-shadow d-block fw-bold">
-            17th Jun ‘21
-          </span>
-          <span class="fs-6 text-white text-shadow d-block">
-            <span class="border-end pe-3">Thursday</span>
-            <span class="ps-3">2:45 am</span>
-          </span>
-        </div>
-        <div class="mt-3 d-flex">
-          <div class="d-flex align-items-center pe-4 border-end">
-            <img
-              src="./assets/icons/today-wind.png"
-              alt="today-wind"
-              class="img-thumbnail bg-transparent border-0"
-              width="30px"
-            />
-            <span class="ms-2 me-4 text-white text-shadow fw-bold">Wind</span>
-            <span class="text-white text-shadow fw-bold">10 km/h</span>
-          </div>
-          <div class="d-flex align-items-center px-4 border-end">
-            <img
-              src="./assets/icons/today-hum.png"
-              alt="today-hum"
-              class="img-thumbnail bg-transparent border-0"
-              width="30px"
-            />
-            <span class="ms-2 me-4 text-white text-shadow fw-bold">Hum</span>
-            <span class="text-white text-shadow fw-bold">50%</span>
-          </div>
-          <div class="d-flex align-items-center ps-4">
-            <img
-              src="./assets/icons/today-rain.png"
-              alt="today-rain"
-              class="img-thumbnail bg-transparent border-0"
-              width="30px"
-            />
-            <span class="ms-2 me-4 text-white text-shadow fw-bold">Rain</span>
-            <span class="text-white text-shadow fw-bold">0.2%</span>
+          <div class="row">
+            <div class="col-sm-3">
+              <div class="card bg-transparent border-0 shadow">
+                <div class="card-header border-0 bg-glass text-center pt-3">
+                  <span class="text-white fw-bold">24℃</span>
+                </div>
+                <div class="card-body bg-glass">
+                  <img
+                    src="./assets/images/WeatherIcon - 2-32.svg"
+                    alt="weather"
+                    class="img-fluid d-block"
+                    width="80px"
+                  />
+                </div>
+                <div class="card-footer border-0 bg-glass text-center pb-3">
+                  <span class="text-white fw-bold">Mon</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="card bg-transparent border-0 shadow">
+                <div class="card-header border-0 bg-glass text-center pt-3">
+                  <span class="text-white fw-bold">24℃</span>
+                </div>
+                <div class="card-body bg-glass">
+                  <img
+                    src="./assets/images/WeatherIcon - 2-32.svg"
+                    alt="weather"
+                    class="img-fluid d-block"
+                    width="80px"
+                  />
+                </div>
+                <div class="card-footer border-0 bg-glass text-center pb-3">
+                  <span class="text-white fw-bold">Mon</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="card bg-transparent border-0 shadow">
+                <div class="card-header border-0 bg-glass text-center pt-3">
+                  <span class="text-white fw-bold">24℃</span>
+                </div>
+                <div class="card-body bg-glass">
+                  <img
+                    src="./assets/images/WeatherIcon - 2-32.svg"
+                    alt="weather"
+                    class="img-fluid d-block"
+                    width="80px"
+                  />
+                </div>
+                <div class="card-footer border-0 bg-glass text-center pb-3">
+                  <span class="text-white fw-bold">Mon</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="card bg-transparent border-0 shadow">
+                <div class="card-header border-0 bg-glass text-center pt-3">
+                  <span class="text-white fw-bold">24℃</span>
+                </div>
+                <div class="card-body bg-glass">
+                  <img
+                    src="./assets/images/WeatherIcon - 2-32.svg"
+                    alt="weather"
+                    class="img-fluid d-block"
+                    width="80px"
+                  />
+                </div>
+                <div class="card-footer border-0 bg-glass text-center pb-3">
+                  <span class="text-white fw-bold">Mon</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
