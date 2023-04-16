@@ -1,3 +1,5 @@
+import '../components/CurrentLocation'
+
 const main = () => {
   const inputSearch = $('input[name="search-location"]')
   const searchContent = $('.dropdown-content')
