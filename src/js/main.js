@@ -1,4 +1,5 @@
 import '../components/CurrentLocation'
+import '../components/CurrentDate'
 
 const main = () => {
   const inputSearch = $('input[name="search-location"]')
