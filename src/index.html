@@ -9,31 +9,11 @@
   <body>
     <main class="container py-md-5">
       <section id="main-section" class="row py-5">
+        <current-temp class="col-sm-6 text-center text-sm-start"></current-temp>
         <div class="col-sm-6 d-flex flex-column justify-content-between">
           <div class="row align-items-center text-center text-sm-start mb-3 mb-lg-0">
             <current-location class="col-lg-6 mb-3 mb-lg-0"></current-location>
-            <div class="position-relative col-lg-6">
-              <div class="input-group">
-                <input
-                  type="text"
-                  name="search-location"
-                  class="form-control shadow-none"
-                  placeholder="Search..."
-                  aria-label="Location"
-                />
-                <span class="btn btn-search p-1 ms-auto input-group-text">
-                  <img
-                    src="./assets/icons/search.png"
-                    width="30px"
-                    alt="search"
-                    class="img-thumbnail bg-transparent border-0"
-                  />
-                </span>
-              </div>
-              <div class="dropdown-content d-none rounded-3 py-2">
-                <a href="#" class="dropdown-link px-3 py-2">Link 1</a>
-              </div>
-            </div>
+            <search-location class="position-relative col-lg-6"></search-location>
           </div>
 
           <div>
