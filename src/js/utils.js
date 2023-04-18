@@ -23,7 +23,7 @@ export function getCurrentDay() {
 
 export function getCurrentTime() {
   const date = new Date() // create a new Date object
-  const options = { hour: '2-digit', minute: '2-digit' } // set the options to get the time in the format of "hh:mm"
-  const timeString = date.toLocaleTimeString([], options) // get the time as a string in the format of "hh:mm"
+  const options = { hour: 'numeric', minute: 'numeric', hour12: true } // set the options to get the time in the format of "h:mm AM/PM"
+  const timeString = date.toLocaleTimeString([], options) // get the time as a string in the format of "h:mm AM/PM"
   return timeString // return the time as a string
 }
