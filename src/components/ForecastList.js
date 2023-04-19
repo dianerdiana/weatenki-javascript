@@ -20,6 +20,8 @@ class ForecastList extends HTMLElement {
       const forecast = {
         date: fc.Date,
         temp: fc.Temperature,
+        day: fc.Day.Icon,
+        night: fc.Night.Icon,
       };
       forecastItem.setAttribute('forecast', JSON.stringify(forecast));
       this.appendChild(forecastItem);
