@@ -28,3 +28,5 @@ class SearchLocation extends HTMLElement {
     `;
   }
 }
+
+customElements.define('search-location', SearchLocation);
