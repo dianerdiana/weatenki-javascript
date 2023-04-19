@@ -1,12 +1,12 @@
-'use strict'
+'use strict';
 
-const path = require('path')
-const autoprefixer = require('autoprefixer')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const miniCssExtractPlugin = require('mini-css-extract-plugin')
+const path = require('path');
+const autoprefixer = require('autoprefixer');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const miniCssExtractPlugin = require('mini-css-extract-plugin');
 // const ESLintPlugin = require('eslint-webpack-plugin')
-const webpack = require('webpack')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
+const webpack = require('webpack');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   mode: 'development',
@@ -76,4 +76,4 @@ module.exports = {
       },
     ],
   },
-}
+};
