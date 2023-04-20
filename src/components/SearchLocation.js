@@ -1,41 +1,18 @@
-import axios from 'axios';
-
-const API_KEY = 'wxJnfpf0jV48rijOEwWGCLOLvLB6aKfj';
-
 class SearchLocation extends HTMLElement {
   connectedCallback() {
     this.render();
+    this.input = this.querySelector('input[name="search-location"]');
+    this.input.addEventListener('input', () => {
+      this.value = this.input.value;
+    });
   }
 
-  handleChange() {
-    const value = $('input').val();
-    const searchContent = $('.dropdown-content');
-    if (value.length >= 3) {
-      searchContent.removeClass('d-none').addClass('d-flex');
-      this.getLocations(value).then((res) => {
-        if (res.status == 200) {
-          res.data.forEach((loc) => {
-            const location = $(`
-              <a href="#" class="dropdown-link fw-bold px-3 py-2">
-                ${loc.LocalizedName}
-              </a>`);
-            $('.dropdown-content').append(location);
-          });
-        }
-      });
-    } else {
-      searchContent.addClass('d-none');
-    }
+  get value() {
+    return this.input.value;
   }
 
-  async getLocations(val) {
-    try {
-      const url = `http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${API_KEY}&q=${val}`;
-      const locations = await axios.get(url);
-      return locations;
-    } catch (error) {
-      console.log(error);
-    }
+  set value(val) {
+    this.input.value = val;
   }
 
   render() {

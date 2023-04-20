@@ -36,22 +36,14 @@ body {
   top: 58.19%;
   bottom: 22.88%;
 
-  background: linear-gradient(
-    89.73deg,
-    rgba(37, 70, 89, 0.3) 4.84%,
-    rgba(2, 53, 83, 0.3) 109.55%
-  );
+  background: linear-gradient(89.73deg, rgba(37, 70, 89, 0.3) 4.84%, rgba(2, 53, 83, 0.3) 109.55%);
   opacity: 0.67;
   filter: blur(12.8083px);
   transform: matrix(0.74, -0.67, 0.8, 0.6, 0, 0);
 }
 
 .btn-search {
-  background: linear-gradient(
-    116.79deg,
-    rgba(255, 255, 255, 0.48) 0%,
-    rgba(255, 255, 255, 0.12) 99.45%
-  );
+  background: linear-gradient(116.79deg, rgba(255, 255, 255, 0.48) 0%, rgba(255, 255, 255, 0.12) 99.45%);
   backdrop-filter: blur(50px);
   /* Note: backdrop-filter has minimal browser support */
 }
@@ -76,4 +68,8 @@ body {
 .bg-glass {
   background: hsla(0, 0%, 100%, 0.486) !important;
   filter: blur(0.569258px);
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }
