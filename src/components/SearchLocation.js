@@ -2,9 +2,6 @@ class SearchLocation extends HTMLElement {
   connectedCallback() {
     this.render();
     this.input = this.querySelector('input[name="search-location"]');
-    this.input.addEventListener('input', () => {
-      this.value = this.input.value;
-    });
   }
 
   get value() {

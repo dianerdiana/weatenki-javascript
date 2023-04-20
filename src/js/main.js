@@ -76,7 +76,15 @@ const main = () => {
 
   searchLocation.addEventListener('input', async () => {
     const value = searchLocation.value;
-    if (value.length >= 3) {
+    if (value.length > 0 && value.length < 3) {
+      const locationItem = document.createElement('location-item');
+      locationItem.content = 'Please input min. 3 char...';
+
+      searchContent.removeClass('d-none').addClass('d-flex');
+      searchContent.empty();
+
+      searchContent.append(locationItem);
+    } else if (value.length >= 3) {
       const url = `${BASE_URL}/locations/v1/cities/autocomplete`;
       const params = {
         apikey: API_KEY,
