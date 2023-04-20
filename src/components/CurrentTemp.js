@@ -22,6 +22,8 @@ class CurrentTemp extends HTMLElement {
 
   render() {
     const { icon, degree } = this._temp;
+
+    this.classList = 'col-md-4 text-center text-lg-start';
     this.innerHTML = `
       <img
         src="${icon.img}"

@@ -16,6 +16,7 @@ class SearchLocation extends HTMLElement {
   }
 
   render() {
+    this.classList = 'position-relative col-lg-6 text-center text-lg-start';
     this.innerHTML = `
       <div class="input-group">
         <input

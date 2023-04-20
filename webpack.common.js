@@ -5,8 +5,9 @@ const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const miniCssExtractPlugin = require('mini-css-extract-plugin');
 // const ESLintPlugin = require('eslint-webpack-plugin')
-const webpack = require('webpack');
+const Webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
   mode: 'development',
@@ -24,7 +25,7 @@ module.exports = {
     new HtmlWebpackPlugin({ template: './src/index.html' }),
     new miniCssExtractPlugin(),
     // new ESLintPlugin(),
-    new webpack.ProvidePlugin({
+    new Webpack.ProvidePlugin({
       $: require.resolve('jquery'),
       jQuery: require.resolve('jquery'),
     }),
@@ -33,8 +34,19 @@ module.exports = {
         {
           from: 'src/assets',
           to: 'assets',
+          globOptions: {
+            ignore: ['**/images/**'],
+          },
         },
       ],
+    }),
+    new TerserPlugin({
+      terserOptions: {
+        format: {
+          comments: false,
+        },
+      },
+      extractComments: false,
     }),
   ],
   module: {

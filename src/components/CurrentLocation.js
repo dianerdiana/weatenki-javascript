@@ -15,6 +15,7 @@ class CurrentLocation extends HTMLElement {
   render() {
     const { city, country } = this._location;
 
+    this.classList = 'col-md-6 mb-3 mb-lg-0 text-center text-lg-start';
     this.innerHTML = `
       <img
         src="./assets/icons/location.png"

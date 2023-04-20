@@ -15,8 +15,9 @@ class CurrentStatus extends HTMLElement {
 
   render() {
     const { wind, liquid, rain } = this._status;
+    this.classList = 'mt-3 mb-3 mb-lg-0 row';
     this.innerHTML = `
-      <div class="d-flex col-lg-4 align-items-center pe-md-0 px-4">
+      <div class="col-lg-4">
         <img
           src="./assets/icons/today-wind.png"
           alt="today-wind"
@@ -28,7 +29,7 @@ class CurrentStatus extends HTMLElement {
         </span>
         <span class="text-white text-shadow fw-bold">${wind} km/h</span>
       </div>
-      <div class="d-flex col-lg-4 align-items-center px-4">
+      <div class="col-lg-4">
         <img
           src="./assets/icons/today-hum.png"
           alt="today-liquid"
@@ -40,7 +41,7 @@ class CurrentStatus extends HTMLElement {
         </span>
         <span class="text-white text-shadow fw-bold">${liquid}mm</span>
       </div>
-      <div class="d-flex col-lg-4 align-items-center ps-4">
+      <div class="col-lg-4">
         <img
           src="./assets/icons/today-rain.png"
           alt="today-rain"

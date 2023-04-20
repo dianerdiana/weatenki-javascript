@@ -13,6 +13,7 @@ class ForecastList extends HTMLElement {
   }
 
   render() {
+    this.classList = 'row justify-content-center justify-content-lg-between pb-5';
     this.innerHTML = '';
 
     this._forecasts.forEach((fc, index) => {

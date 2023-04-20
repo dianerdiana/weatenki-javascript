@@ -21,9 +21,10 @@ class ForecastItem extends HTMLElement {
       const day_name = getCurrentDay({ Format: 'short', Input: date });
       const icon = isDay() ? getIcon(day) : getIcon(night);
 
-      this.classList = 'col-6 col-sm-4 col-lg-2 mb-3 mb-lg-0';
+      this.classList = 'col-7 col-sm-4 col-lg-2 mb-3 mb-lg-0';
+      this.style = 'min-height: 190px';
       this.innerHTML = `
-      <div class="card bg-transparent border-0 shadow" style="height: 190px;">
+      <div class="card bg-transparent border-0 shadow" style="min-height: 190px">
         <div class="card-header border-0 bg-glass text-center pt-3">
           <span class="text-white fw-bold">${Math.round((temp.Minimum.Value + temp.Maximum.Value) / 2)}℃</span>
         </div>
