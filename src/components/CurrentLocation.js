@@ -1,20 +1,20 @@
 class CurrentLocation extends HTMLElement {
   connectedCallback() {
-    this.province = this.getAttribute('province') || 'Jakarta'
-    this.country = this.getAttribute('country') || 'Indonesia'
-    this.render()
+    this._location = {
+      city: 'Jakarta',
+      country: 'Indonesia',
+    };
+    this.render();
   }
 
-  attributeChangedCallback(name, oldValue, newValue) {
-    this[name] = newValue
-    this.render()
-  }
-
-  static get observedAttributes() {
-    return ['province', 'country']
+  set location(location) {
+    this._location = location;
+    this.render();
   }
 
   render() {
+    const { city, country } = this._location;
+
     this.innerHTML = `
       <img
         src="./assets/icons/location.png"
@@ -23,10 +23,10 @@ class CurrentLocation extends HTMLElement {
         class="img-thumbnail bg-transparent border-0"
       />
       <span class="text-white text-shadow fw-bold ms-3">
-        ${this.province}, ${this.country}
+        ${city}, ${country}
       </span>
-    `
+    `;
   }
 }
 
-customElements.define('current-location', CurrentLocation)
+customElements.define('current-location', CurrentLocation);

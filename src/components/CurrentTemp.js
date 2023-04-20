@@ -1,12 +1,30 @@
 class CurrentTemp extends HTMLElement {
   connectedCallback() {
-    this.render()
+    this._temp = {
+      icon: {
+        id: 7,
+        text: 'Cloudy',
+        img: './assets/icons/WeatherIcon - 2-32.svg',
+      },
+      degree: 27,
+    };
+    this.render();
+  }
+
+  set temp(temp) {
+    this._temp = temp;
+    this.render();
+  }
+
+  get temp() {
+    return this._temp;
   }
 
   render() {
+    const { icon, degree } = this._temp;
     this.innerHTML = `
       <img
-        src="./assets/icons/WeatherIcon - 2-40.svg"
+        src="${icon.img}"
         alt="today-forecast"
         class="img-fluid"
         width="143px"
@@ -14,12 +32,12 @@ class CurrentTemp extends HTMLElement {
       />
       <div class="my-3">
         <span id="today_temp" class="today-temp">
-          27
+          ${degree}
           <span class="temp"> ℃ </span>
         </span>
       </div>
-    `
+    `;
   }
 }
 
-customElements.define('current-temp', CurrentTemp)
+customElements.define('current-temp', CurrentTemp);
