@@ -10,11 +10,11 @@ const BASE_URL = 'http://dataservice.accuweather.com';
 
 const main = () => {
   const searchLocation = document.querySelector('search-location');
-  const searchContent = $('.dropdown-content');
   const currentTemp = document.querySelector('current-temp');
   const currentLocation = document.querySelector('current-location');
   const currentStatus = document.querySelector('current-status');
   const forecastList = document.querySelector('forecast-list');
+  const searchContent = $('.dropdown-content');
 
   const showPosition = async (position) => {
     const latitude = position.coords.latitude;
@@ -74,7 +74,7 @@ const main = () => {
     console.log('Geolocation is not supported by this browser.');
   }
 
-  searchLocation.addEventListener('input', () => {
+  searchLocation.addEventListener('input', async () => {
     const value = searchLocation.value;
     if (value.length >= 3) {
       const url = `${BASE_URL}/locations/v1/cities/autocomplete`;
@@ -83,29 +83,30 @@ const main = () => {
         q: value,
       };
 
-      axios
-        .get(url, { params })
-        .then((response) => {
-          searchContent.removeClass('d-none').addClass('d-flex');
-          searchContent.empty();
-          response.data.forEach((res) => {
-            const locationItem = document.createElement('location-item');
-            const key = res.Key;
-            const city = res.LocalizedName;
-            const country = res.Country.LocalizedName;
-            locationItem.text = { city, country };
-            locationItem.key = key;
+      try {
+        const response = await axios.get(url, { params });
 
-            searchContent.append(locationItem);
-          });
-        })
-        .catch((error) => console.log(error));
+        searchContent.removeClass('d-none').addClass('d-flex');
+        searchContent.empty();
+        response.data.forEach((res) => {
+          const locationItem = document.createElement('location-item');
+          const key = res.Key;
+          const city = res.LocalizedName;
+          const country = res.Country.LocalizedName;
+          locationItem.text = { city, country };
+          locationItem.key = key;
+
+          searchContent.append(locationItem);
+        });
+      } catch (error) {
+        console.log(error);
+      }
     } else {
       searchContent.addClass('d-none');
     }
   });
 
-  document.addEventListener('click', (event) => {
+  document.addEventListener('click', async (event) => {
     if (event.target.tagName === 'LOCATION-ITEM') {
       const key = event.target.getAttribute('key');
       const location = event.target.getAttribute('location');
@@ -116,31 +117,32 @@ const main = () => {
         metric: true,
       };
 
-      axios
-        .get(url, { params })
-        .then((response) => {
-          searchLocation.value = '';
-          searchContent.addClass('d-none');
+      try {
+        const response = await axios.get(url, { params });
 
-          const today_weather = response.data.DailyForecasts[0];
-          const temperature = today_weather.Temperature;
-          const day_temp = today_weather.Day;
-          const night_temp = today_weather.Night;
-          const icon = isDay() ? getIcon(day_temp.Icon) : getIcon(night_temp.Icon);
-          const degree = Math.round((temperature.Minimum.Value + temperature.Maximum.Value) / 2);
-          const wind = isDay() ? day_temp.Wind.Speed.Value : night_temp.Wind.Speed.Value;
-          const liquid = isDay() ? day_temp.TotalLiquid.Value : night_temp.TotalLiquid.Value;
-          const rain = isDay() ? day_temp.RainProbability : night_temp.RainProbability;
+        searchLocation.value = '';
+        searchContent.addClass('d-none');
 
-          const temp = { icon, degree };
-          const status = { wind, liquid, rain };
+        const today_weather = response.data.DailyForecasts[0];
+        const temperature = today_weather.Temperature;
+        const day_temp = today_weather.Day;
+        const night_temp = today_weather.Night;
+        const icon = isDay() ? getIcon(day_temp.Icon) : getIcon(night_temp.Icon);
+        const degree = Math.round((temperature.Minimum.Value + temperature.Maximum.Value) / 2);
+        const wind = isDay() ? day_temp.Wind.Speed.Value : night_temp.Wind.Speed.Value;
+        const liquid = isDay() ? day_temp.TotalLiquid.Value : night_temp.TotalLiquid.Value;
+        const rain = isDay() ? day_temp.RainProbability : night_temp.RainProbability;
 
-          forecastList.forecasts = response.data;
-          currentTemp.temp = temp;
-          currentStatus.status = status;
-          currentLocation.location = JSON.parse(location);
-        })
-        .catch((error) => console.log(error));
+        const temp = { icon, degree };
+        const status = { wind, liquid, rain };
+
+        forecastList.forecasts = response.data;
+        currentTemp.temp = temp;
+        currentStatus.status = status;
+        currentLocation.location = JSON.parse(location);
+      } catch (error) {
+        console.log(error);
+      }
     }
   });
 };
