@@ -6,7 +6,7 @@ import { isDay, getIcon } from './utils';
 
 // key for AccuWeather API
 const API_KEY = 'wxJnfpf0jV48rijOEwWGCLOLvLB6aKfj';
-const BASE_URL = 'http://dataservice.accuweather.com';
+const BASE_URL = 'https://dataservice.accuweather.com';
 
 const main = () => {
   const searchLocation = document.querySelector('search-location');
